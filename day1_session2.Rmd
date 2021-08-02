@@ -1,5 +1,5 @@
 ---
-title: "day 1 interactive session 2"
+title: "Day 1 Interactive Session 2"
 author: "Marie Rivers"
 date: "8/2/2021"
 output: html_document
@@ -57,7 +57,7 @@ pop_logistic(capacity = 2580, initial_pop = 230, rate = 0.32, time_yr = 2.4)
 ### Try finding the population over a sequence of times
 
 ```{r}
-time_vec <- seq(from = 0, to = 40, by = 0.5) 
+time_vec <- seq(from = 0, to = 15, by = 0.5) 
 
 ```
 Now let's estimate the population over that range of times, given capacity = 2580, initial population = 230, and rate = 0.31
