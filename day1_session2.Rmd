@@ -1,0 +1,89 @@
+---
+title: "day 1 interactive session 2"
+author: "Marie Rivers"
+date: "8/2/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+### Logs and exponents in R
+
+Some examples of using `log()` function and `exp()` function in R
+
+*Note: use ' ' to get code style font (top left quote mark)
+
+```{r}
+# Examples of logarithms (used hashtag for comments)
+
+log(4)
+
+# Example of exponents
+
+exp(5)
+
+log(exp(1))
+```
+### Creating Sequences of Values
+
+```{r}
+# A sequence from 1 to 20, by increments of 1
+
+ex_1 <- seq(from = 1, to = 20, by = 1)
+# vector from 0 to 40 by increments of 0.2
+ex_2 <- seq(from = 0, to = 40, by = 0.2)
+#vector from 1 to 5000 by increments of 10
+ex_3 <- seq(from = 1, to = 5000, by = 10)
+```
+### Create a function for logistic growth
+
+Given the carrying capacity, initial population, the growth rate, and time, use the logistic growth model to estimate the population at that time.
+
+
+```{r}
+pop_logistic <- function(capacity, initial_pop, rate, time_yr) {
+  
+  capacity/(1 + ((capacity - initial_pop) / initial_pop) * exp(-rate * time_yr))
+  
+}
+pop_logistic(capacity = 2580, initial_pop = 230, rate = 0.32, time_yr = 2.4)
+  
+# use squigle brackets { } when defining a function
+```
+### Try finding the population over a sequence of times
+
+```{r}
+time_vec <- seq(from = 0, to = 40, by = 0.5) 
+
+```
+Now let's estimate the population over that range of times, given capacity = 2580, initial population = 230, and rate = 0.31
+```{r}
+chipmunk_pop <- pop_logistic(capacity = 2580, initial_pop = 230, rate = 0.32, time_yr = time_vec)
+```
+### Create a data frame and plot chipmunk population over time
+
+```{r}
+
+chipmunk_df <- data.frame(time_vec, chipmunk_pop)
+
+chipmunk_df  #call the data frame
+```
+### Create a bare minimum ggplot graph. 
+
+First tell it you're using ggplot, then tell it what data you are using and what data you are plotting. Map a variable to an aesthetic. Tell the graph the type of geometry to create.
+```{r}
+
+ggplot(data = chipmunk_df, aes(x = time_vec, y = chipmunk_pop)) + 
+  geom_point() +
+  labs(x = "Time (years)",
+      y = "Chipmunk population (individuals)",
+      title = "Inyo National Forest Chipmunks",
+      subtitle = "Yay chipmunks")
+  #add axis labels and units with labs
+```
+
+
