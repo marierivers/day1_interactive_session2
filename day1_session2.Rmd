@@ -85,5 +85,9 @@ ggplot(data = chipmunk_df, aes(x = time_vec, y = chipmunk_pop)) +
       subtitle = "Yay chipmunks")
   #add axis labels and units with labs
 ```
+```{r}
+test = 5 + 7
+
+```
 
 
